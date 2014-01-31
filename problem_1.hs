@@ -5,7 +5,10 @@
 --  Prelude> myLast ['x','y','z']
 --  'z'
 
-myLast :: [a] -> Maybe a
-myLast [] = Nothing
-myLast xs = Just $ head . reverse $ xs
+import Data.Maybe
+
+myLast :: (Eq a) => [a] -> Maybe a
+myLast xs
+  | xs == []  = Nothing
+  | otherwise = Just $ head . reverse $ xs
 
