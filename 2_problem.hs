@@ -28,5 +28,5 @@ next2Last2 xs  | drop 1 xs == [] = Nothing
 
 next2Last3 :: (Eq a) => [a] -> Maybe a
 next2Last3 xs  | drop 1 xs == [] = Nothing
-               | otherwise       = Just $ last $ init xs
+               | otherwise       = Just $ last . init $ xs
 
