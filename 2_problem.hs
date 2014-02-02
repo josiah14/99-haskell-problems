@@ -12,21 +12,24 @@
 import Data.Maybe
 import qualified Data.List
 
+listLongEnough :: [a] -> Bool
+listLongEnough = null . drop 1
+
 next2Last :: (Eq a) => [a] -> Maybe a
-next2Last xs  | drop 1 xs == [] = Nothing
-              | otherwise       = Just $ xs!!next2LastIdx
+next2Last xs  | listLongEnough xs = Nothing
+              | otherwise         = Just $ xs!!next2LastIdx
               where next2LastIdx = length xs - 2
 
 next2Last1 :: (Eq a) => [a] -> Maybe a
-next2Last1 xs  | drop 1 xs == [] = Nothing
-               | otherwise       = Just $ (reverse xs)!!1
+next2Last1 xs  | listLongEnough xs = Nothing
+               | otherwise         = Just $ (reverse xs)!!1
 
 next2Last2 :: (Eq a) => [a] -> Maybe a
-next2Last2 xs  | drop 1 xs == [] = Nothing
-               | otherwise       = Just $ head $ drop num xs
+next2Last2 xs  | listLongEnough xs = Nothing
+               | otherwise         = Just $ head $ drop num xs
                where num = length xs - 2
 
 next2Last3 :: (Eq a) => [a] -> Maybe a
-next2Last3 xs  | drop 1 xs == [] = Nothing
-               | otherwise       = Just $ last . init $ xs
+next2Last3 xs  | listLongEnough xs = Nothing
+               | otherwise         = Just $ last . init $ xs
 
