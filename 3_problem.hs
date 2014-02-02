@@ -35,6 +35,6 @@ elementAt3 xs n | null xs || not isIndexValid = Nothing
 
 element4 :: (Eq a) => [a] -> Int -> Maybe a
 element4 xs n | null xs || not isIndexValid = Nothing
-              | otherwise                   = Just $ head $ foldr (id) xs $ replicate (n - 2) tail
+              | otherwise                   = Just $ head $ foldr (id) xs $ replicate (n - 1) tail
               where isIndexValid = n <= length xs && n > 0
 
