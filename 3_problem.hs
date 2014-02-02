@@ -33,3 +33,8 @@ elementAt3 xs n | null xs || not isIndexValid = Nothing
                 | otherwise                   = Just $ head . drop (n - 1) $ xs
                where isIndexValid = n <= length xs && n > 0
 
+element4 (Eq a) => [a] -> Int -> Maybe a
+element4 xs n | null xs || not isIndexValid = Nothing
+              | otherwise                   = Just $ head $ foldr (id) xs $ replicate (n - 2) tail
+              where isIndexValid = n <= length xs && n > 0
+
