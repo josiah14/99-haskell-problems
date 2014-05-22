@@ -23,11 +23,11 @@ myReverse0 xs = case xs of
 
 myReverse1 :: [a] -> [a]
 myReverse1 xs | null xs || (null . tail) xs = xs
-              | otherwise                   = (last xs):concat [myReverse0 $ middle xs, [head xs]]
+              | otherwise                   = (last xs):concat [myReverse1 $ middle xs, [head xs]]
 
 myReverse2 :: [a] -> [a]
 myReverse2 xs | null xs || (null . tail) xs = xs
-              | otherwise                   = (last xs):((myReverse0 $ middle xs) ++ [head xs])
+              | otherwise                   = (last xs):((myReverse2 $ middle xs) ++ [head xs])
 
 myReverse3 :: [a] -> [a]
 myReverse3 = foldl (flip (:)) []
